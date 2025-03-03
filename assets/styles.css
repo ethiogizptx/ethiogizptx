@@ -1,0 +1,314 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0fdf4; /* Light green background */
+    color: #064e3b; /* Dark green text */
+    line-height: 1.6;
+  }
+  
+  /* Header & Navigation */
+  header {
+    background-color: #047857; /* Deep green */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #a7f3d0;
+  }
+  
+  /* Main Content */
+  main {
+    margin-top: 80px;
+    padding: 20px;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 100px 20px 50px;
+    background: linear-gradient(to right, #a7f3d0, #34d399);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Call-to-Action Button */
+  .cta-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #10b981;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cta-button:hover {
+    background-color: #059669;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #064e3b;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Section & Article Styling */
+  section {
+    margin: 40px 0;
+  }
+  
+  .education, .stakeholders, .experts-directory, .impact-analyzer, .contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  article {
+    margin-bottom: 20px;
+  }
+  
+  article h3 {
+    color: #047857;
+    margin-bottom: 10px;
+  }
+  
+  /* Form Styling */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #064e3b;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Quiz Page Specific */
+  .quiz-container {
+    max-width: 800px;
+    margin: 120px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .quiz-container h1 {
+    color: #047857;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-option {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #10b981;
+    border-radius: 5px;
+    background-color: #a7f3d0;
+    color: #064e3b;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .quiz-option:hover {
+    background-color: #34d399;
+  }
+  
+  /* Impact Analyzer Specific */
+  .impact-analyzer {
+    max-width: 800px;
+    margin: 120px auto 60px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .impact-analyzer h1,
+  .impact-analyzer h2 {
+    text-align: center;
+    color: #047857;
+  }
+  
+  .impact-analyzer p {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #10b981;
+    color: white;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .tab:hover,
+  .tab.active {
+    background: #059669;
+  }
+  
+  .section-content {
+    display: none;
+  }
+  
+  .section-content.active {
+    display: block;
+  }
+  
+  .calc-result {
+    background-color: #e0f2f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: #064e3b;
+  }
+  
+  /* Experts Directory Specific */
+  .experts-container {
+    max-width: 1000px;
+    margin: 120px auto;
+    padding: 20px;
+  }
+  
+  .expert-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f0fdf4;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .expert-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .expert-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #047857;
+  }
+  
+  .expert-profession,
+  .expert-location {
+    font-size: 1rem;
+    color: #064e3b;
+  }
+  
+  .search-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Contact Page Specific */
+  .contact-container {
+    max-width: 800px;
+    margin: 120px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  #form-feedback {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #10b981;
+  }
+  
+  /* Responsive Media Queries */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .search-input {
+      width: 80%;
+    }
+  }

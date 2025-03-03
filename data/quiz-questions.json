@@ -1,0 +1,83 @@
+[
+    {
+      "question": "What is green hydrogen primarily produced from?",
+      "options": [
+        "Fossil fuels",
+        "Renewable energy sources",
+        "Nuclear energy",
+        "Coal"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which process is used to produce sustainable aviation fuel (eSAF)?",
+      "options": [
+        "Steam reforming",
+        "Electrolysis",
+        "Fischer-Tropsch synthesis",
+        "Catalytic cracking"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "Green hydrogen helps reduce CO₂ emissions by:",
+      "options": [
+        "Increasing fossil fuel use",
+        "Enhancing renewable energy integration",
+        "Boosting nuclear energy",
+        "All of the above"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "PtX stands for:",
+      "options": [
+        "Power-to-X",
+        "Plasma-to-X",
+        "Petroleum-to-X",
+        "Power-to-Extra"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "Which is a major advantage of green hydrogen?",
+      "options": [
+        "It is produced from renewable sources",
+        "It emits high levels of CO₂",
+        "It is cheaper than natural gas",
+        "It requires fossil fuels"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "What is the primary challenge for scaling green hydrogen production?",
+      "options": [
+        "Lack of water",
+        "High production cost",
+        "Insufficient renewable energy",
+        "Overproduction issues"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "Which country is a recognized leader in green hydrogen initiatives?",
+      "options": [
+        "USA",
+        "Germany",
+        "China",
+        "Brazil"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "What is the main feedstock for producing sustainable aviation fuel (eSAF) in green hydrogen projects?",
+      "options": [
+        "Crude oil",
+        "Biomass",
+        "Green hydrogen",
+        "Natural gas"
+      ],
+      "correctIndex": 2
+    }
+  ]
+  

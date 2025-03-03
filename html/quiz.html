@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Green Hydrogen PtX Ethiopia</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script defer src="scripts/quiz.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('assets/images/quiz-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 120px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .question {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .quiz-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .quiz-option {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            color: white;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .true-btn {
+            background: #10b981;
+        }
+        .false-btn {
+            background: #e11d48;
+        }
+        .quiz-option:hover {
+            transform: translateY(-3px);
+        }
+        .hidden {
+            display: none;
+        }
+        #feedback {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #next-question {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #next-question:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Green Hydrogen PtX</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="stakeholders.html">Stakeholders</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
+                <li><a href="experts.html">Experts Directory</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="quiz-container">
+            <h1>Green Hydrogen True or False Quiz</h1>
+            <p>Test your knowledge by answering True or False.</p>
+            
+            <div id="quiz-content">
+                <p class="question" id="question-text">Click 'Start Quiz' to begin!</p>
+                <div class="quiz-options">
+                    <button class="quiz-option true-btn" id="true-btn">True</button>
+                    <button class="quiz-option false-btn" id="false-btn">False</button>
+                </div>
+                <p id="feedback"></p>
+                <button id="next-question" class="hidden">Next Question</button>
+                <button id="start-quiz">Start Quiz</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+    </footer>
+</body>
+</html>

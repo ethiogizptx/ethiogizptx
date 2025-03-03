@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Dr. Amanuel Tesfaye",
+      "profession": "Green Hydrogen Specialist",
+      "location": "Addis Ababa, Ethiopia",
+      "profileImage": "assets/images/amanuel.jpg",
+      "description": "Dr. Tesfaye has over 15 years of experience in renewable energy research, specializing in green hydrogen production and sustainable energy solutions."
+    },
+    {
+      "name": "Ms. Lensa Bekele",
+      "profession": "Renewable Energy Consultant",
+      "location": "Bahir Dar, Ethiopia",
+      "profileImage": "assets/images/lensa.jpg",
+      "description": "Ms. Bekele offers consultancy services for renewable energy projects with a focus on PtX technologies and sustainable aviation fuel."
+    },
+    {
+      "name": "Mr. Daniel Abera",
+      "profession": "Project Manager, Green PtX",
+      "location": "Dire Dawa, Ethiopia",
+      "profileImage": "assets/images/daniel.jpg",
+      "description": "Mr. Abera manages large-scale green hydrogen projects and coordinates with international partners to drive Ethiopia's energy transition."
+    },
+    {
+      "name": "Prof. Sara Mengistu",
+      "profession": "Professor of Sustainable Energy",
+      "location": "Addis Ababa, Ethiopia",
+      "profileImage": "assets/images/sara.jpg",
+      "description": "Prof. Mengistu leads research initiatives on sustainable energy systems and hydrogen-based technologies at the University of Addis Ababa."
+    }
+  ]
