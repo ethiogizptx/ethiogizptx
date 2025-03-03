@@ -7,14 +7,76 @@
     <link rel="stylesheet" href="assets/styles.css">
     <script defer src="scripts/quiz.js"></script>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('assets/images/quiz-bg.jpg') no-repeat center center/cover;
+            background-color: #d1fae5; /* Light green background for eco-friendly theme */
+            color: #c6e7de;
+        }
+        header {
+            background-color: #047857;
             color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+        .about {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .feature-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 250px;
             text-align: center;
         }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+        }
+        
         .quiz-container {
             max-width: 800px;
             margin: 120px auto;
@@ -67,7 +129,7 @@
             margin-top: 20px;
             padding: 12px 25px;
             font-size: 18px;
-            background: #3b82f6;
+            background: #cdcdcd;
             color: white;
             border: none;
             border-radius: 8px;

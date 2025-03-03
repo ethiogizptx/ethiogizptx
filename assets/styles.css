@@ -62,7 +62,7 @@
   .hero {
     text-align: center;
     padding: 100px 20px 50px;
-    background: linear-gradient(to right, #a7f3d0, #34d399);
+    background: linear-gradient(to right, #a7f3d0);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
