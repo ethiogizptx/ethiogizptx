@@ -33,14 +33,14 @@
     .tab {
       padding: 10px 20px;
       cursor: pointer;
-      background: #10b981;
+      background: #10b92c;
       color: white;
       margin: 0 5px;
       border-radius: 5px;
       transition: background-color 0.3s;
     }
     .tab:hover, .tab.active {
-      background: #059669;
+      background: #051396;
     }
     .section-content {
       display: none;
@@ -67,7 +67,7 @@
     .cta-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: #10b981;
+      background-color: #b91010;
       color: white;
       border: none;
       border-radius: 5px;
@@ -131,8 +131,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .about h1, .about h2 {
-            color: #047857;
+        .tabs h1, .about h2 {
+            color: #780404;
         }
         .feature-container {
             display: flex;
@@ -181,29 +181,66 @@
       <p>Analyze the environmental and economic impacts of sustainable aviation fuel (eSAF) derived from green hydrogen.</p>
       <!-- Tab Navigation -->
       <div class="tabs">
-        <div class="tab active" data-tab="calculator">Carbon Footprint Calculator</div>
+        <div class="tab active" data-tab="calculator"> Saved Carbon Footprint Calculator</div>
         <div class="tab" data-tab="economic">Economic Analysis</div>
       </div>
       <!-- Carbon Footprint Calculator Section -->
       <div class="section-content active" id="calculator">
-        <h2>Carbon Footprint Calculator</h2>
+        <h2>Saved Carbon Footprint Calculator</h2>
         <form id="calculator-form">
           <div class="form-group">
             <label for="aircraft">Aircraft Type:</label>
             <select id="aircraft" name="aircraft">
-              <option value="0.003">Boeing 737</option>
-              <option value="0.0028">Airbus A320</option>
+              <option value="0.003">Airbus A350-900</option>
+              <option value="0.0028">Airbus A350-1000</option>
+              <option value="0.003">Boeing 787-8</option>
+              <option value="0.003">Boeing 787-9</option>
+              <option value="0.003">Boeing 777-300ER</option>
+              <option value="0.003">Boeing 777-200LR</option>
+              <option value="0.003">Boeing 737-800</option>
+              <option value="0.003">Boeing 737 MAX 8</option>
+              <option value="0.003">Boeing 737-700NG</option>
+            
             </select>
           </div>
           <div class="form-group">
-            <label for="distance">Flight Distance (km):</label>
-            <input type="number" id="distance" name="distance" required>
+          
+    <label for="departure">Select Departure City:</label>
+    <select id="departure">
+        <option value="4700">Vienna, Austria </option>
+        <option value="5400">Brussels, Belgium </option>
+        <option value="5200">Paris, France </option>
+        <option value="5100">Frankfurt, Germany </option>
+        <option value="5000">Munich, Germany </option>
+        <option value="3600">Athens, Greece </option>
+        <option value="6400">Dublin, Ireland </option>
+        <option value="4700">Milan, Italy </option>
+        <option value="4500">Rome, Italy </option>
+        <option value="6300">Oslo, Norway </option>
+        <option value="5300">Warsaw, Poland </option>
+        <option value="5700">Moscow, Russia </option>
+        <option value="5700">Madrid, Spain </option>
+        <option value="6100">Stockholm, Sweden </option>
+        <option value="5200">Geneva, Switzerland </option>
+        <option value="4000">Istanbul, Turkey </option>
+        <option value="6200">London, United Kingdom </option>
+    </select>
+    
+    <p><strong>Destination: Addis Ababa Bole International Airport (ADD), Ethiopia</strong></p>
+    <p>Approximate Distance: <span id="distance">Select a departure city</span></p>
+    <script>
+      document.getElementById("departure").addEventListener("change", function() {
+          let distance = this.value;
+          document.getElementById("distance").textContent = distance + " km";
+      });
+  </script>
+    
           </div>
           <div class="form-group">
             <label for="esaf-blend">eSAF Blend (%):</label>
             <input type="number" id="esaf-blend" name="esaf-blend" min="0" max="100" required>
           </div>
-          <button type="submit" class="cta-button">Calculate Emissions</button>
+          <button type="submit" class="cta-button">Calculate Saved CO2 Emissions</button>
         </form>
         <div id="calculator-result" class="calc-result"></div>
       </div>
