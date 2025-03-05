@@ -42,32 +42,18 @@
             transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: #a7f3d0;
+            color: #a14545;
         }
-        .about {
+        .quiz {
             max-width: 1000px;
             margin: 120px auto 60px;
             padding: 20px;
             text-align: center;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(163, 15, 15, 0.1);
         }
         
-        .feature-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .feature-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 250px;
-            text-align: center;
-        }
         footer {
             background-color: #064e3b;
             color: white;
@@ -80,7 +66,7 @@
         .quiz-container {
             max-width: 800px;
             margin: 120px auto;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgb(0, 0, 0);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -89,6 +75,7 @@
             font-size: 32px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #05f315;
         }
         .question {
             font-size: 22px;
@@ -110,10 +97,10 @@
             transition: background 0.3s, transform 0.2s;
         }
         .true-btn {
-            background: #10b981;
+            background: #0fff02;
         }
         .false-btn {
-            background: #e11d48;
+            background: #ff0000;
         }
         .quiz-option:hover {
             transform: translateY(-3px);
@@ -122,22 +109,25 @@
             display: none;
         }
         #feedback {
-            font-size: 18px;
+            font-size: 30px;
             margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
         }
         #next-question {
             margin-top: 20px;
             padding: 12px 25px;
             font-size: 18px;
-            background: #cdcdcd;
-            color: white;
+            background: #fefdfdf0;
+            color: rgb(0, 0, 0);
             border: none;
-            border-radius: 8px;
+            border-radius: 80px;
             cursor: pointer;
             transition: background 0.3s;
+            margin-left: 40%;
         }
         #next-question:hover {
-            background: #2563eb;
+            background: #8f25eb;
         }
     </style>
 </head>
@@ -161,7 +151,7 @@
     <main>
         <section class="quiz-container">
             <h1>Green Hydrogen True or False Quiz</h1>
-            <p>Test your knowledge by answering True or False.</p>
+            
             
             <div id="quiz-content">
                 <p class="question" id="question-text">Click 'Start Quiz' to begin!</p>
@@ -169,9 +159,9 @@
                     <button class="quiz-option true-btn" id="true-btn">True</button>
                     <button class="quiz-option false-btn" id="false-btn">False</button>
                 </div>
-                <p id="feedback"></p>
+             <p id="feedback"></p>
                 <button id="next-question" class="hidden">Next Question</button>
-                <button id="start-quiz">Start Quiz</button>
+                
             </div>
         </section>
     </main>

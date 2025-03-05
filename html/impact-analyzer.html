@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impact Analyzer - Green Hydrogen PtX Ethiopia</title>
   <link rel="stylesheet" href="assets/styles.css">
-  <script defer src="scripts/impact.js"></script>
+  <script defer src="scripts/impact-analyzer.js"></script>
   <style>
     /* Impact Analyzer specific styling */
     .impact-analyzer {
@@ -191,22 +191,31 @@
           <div class="form-group">
             <label for="aircraft">Aircraft Type:</label>
             <select id="aircraft" name="aircraft">
-              <option value="0.003">Airbus A350-900</option>
-              <option value="0.0028">Airbus A350-1000</option>
-              <option value="0.003">Boeing 787-8</option>
-              <option value="0.003">Boeing 787-9</option>
-              <option value="0.003">Boeing 777-300ER</option>
-              <option value="0.003">Boeing 777-200LR</option>
-              <option value="0.003">Boeing 737-800</option>
-              <option value="0.003">Boeing 737 MAX 8</option>
-              <option value="0.003">Boeing 737-700NG</option>
+              <option>Select Ethiopian Airlines aircraft </option>
+              <option value="22.8">Airbus A350-900</option>
+              <option value="26.3">Airbus A350-1000</option>
+              <option value="19.8">Boeing 787-8</option>
+              <option value="21.5">Boeing 787-9</option>
+              <option value="33.7">Boeing 777-300ER</option>
+              <option value="32.0">Boeing 777-200LR</option>
+              <option value="10.0">Boeing 737-800</option>
+              <option value="9.4">Boeing 737 MAX 8</option>
+              <option value="9.0">Boeing 737-700NG</option>
             
             </select>
+            <p>Approximate CO₂ Emissions: <span id="emissions">Select aircraft</span></p>
+            <script>
+              document.getElementById("aircraft").addEventListener("change", function() {
+                  let emissions = this.value;
+                  document.getElementById("emissions").textContent = emissions + " kg CO₂/km";
+              });
+           </script>
           </div>
           <div class="form-group">
           
     <label for="departure">Select Departure City:</label>
-    <select id="departure">
+    <select id="departure" name="aircraft">
+        <option>Select departure country and city </option>
         <option value="4700">Vienna, Austria </option>
         <option value="5400">Brussels, Belgium </option>
         <option value="5200">Paris, France </option>
@@ -219,7 +228,7 @@
         <option value="6300">Oslo, Norway </option>
         <option value="5300">Warsaw, Poland </option>
         <option value="5700">Moscow, Russia </option>
-        <option value="5700">Madrid, Spain </option>
+        <option value="5710">Madrid, Spain </option>
         <option value="6100">Stockholm, Sweden </option>
         <option value="5200">Geneva, Switzerland </option>
         <option value="4000">Istanbul, Turkey </option>
@@ -228,17 +237,17 @@
     
     <p><strong>Destination: Addis Ababa Bole International Airport (ADD), Ethiopia</strong></p>
     <p>Approximate Distance: <span id="distance">Select a departure city</span></p>
-    <script>
-      document.getElementById("departure").addEventListener("change", function() {
-          let distance = this.value;
-          document.getElementById("distance").textContent = distance + " km";
-      });
-  </script>
+      <script>
+         document.getElementById("departure").addEventListener("change", function() {
+             let distance = this.value;
+             document.getElementById("distance").textContent = distance + " km";
+         });
+      </script>
     
           </div>
           <div class="form-group">
-            <label for="esaf-blend">eSAF Blend (%):</label>
-            <input type="number" id="esaf-blend" name="esaf-blend" min="0" max="100" required>
+            <label for="esafblend">eSAF Blend (%):</label>
+            <input type="number" id="esafblend" name="esafblend" min="0" max="100" required>
           </div>
           <button type="submit" class="cta-button">Calculate Saved CO2 Emissions</button>
         </form>
@@ -249,20 +258,45 @@
         <h2>Economic Analysis</h2>
         <form id="economic-form">
           <div class="form-group">
-            <label for="conventional-cost">Conventional Fuel Cost ($/liter):</label>
-            <input type="number" id="conventional-cost" name="conventional-cost" step="0.01" required>
+            <label for="station">Select Fueling Country</label>
+            <select id="station">
+              <option>Select fueling country </option>
+              <option value="0.541">Vienna, Austria </option>
+              <option value="0.541">Brussels, Belgium </option>
+              <option value="0.53">Addis Ababa, Ethiopia </option>
+              <option value="0.541">Paris, France </option>
+              <option value="0.541">Frankfurt, Germany </option>
+              <option value="0.541">Munich, Germany </option>
+              <option value="0.541">Athens, Greece </option>
+              <option value="0.541">Dublin, Ireland </option>
+              <option value="0.541">Milan, Italy </option>
+              <option value="0.541">Rome, Italy </option>
+              <option value="0.541">Oslo, Norway </option>
+              <option value="0.541">Warsaw, Poland </option>
+              <option value="0.541">Moscow, Russia </option>
+              <option value="0.541">Madrid, Spain </option>
+              <option value="0.541">Stockholm, Sweden </option>
+              <option value="0.541">Geneva, Switzerland </option>
+              <option value="0.547">Istanbul, Turkey </option>
+              <option value="0.541">London, United Kingdom </option>
+          </select>
+        
+          <p>Today 05 March 2025 JET A1 Price: <span id="price">Select Fueling Country</span></p>
+          <script>
+            document.getElementById("station").addEventListener("change", function() {
+                let price = this.value;
+                document.getElementById("price").textContent = price + "USD per Liter";
+            });
+        </script>
           </div>
           <div class="form-group">
-            <label for="esaf-cost">eSAF Cost ($/liter):</label>
-            <input type="number" id="esaf-cost" name="esaf-cost" step="0.01" required>
+            <label for="esafblending">eSAF blend ratio(%):</label>
+            <input type="number" id="esafblending" name="esafblending" step="0.01" required>
           </div>
-          <div class="form-group">
-            <label for="policy-incentive">Policy Incentive (% reduction in eSAF cost):</label>
-            <input type="number" id="policy-incentive" name="policy-incentive" min="0" max="100" required>
-          </div>
-          <button type="submit" class="cta-button">Calculate Economic Impact</button>
+          
+          <button type="submit" class="cta-button">Calculate Required Policy Incentive</button>
         </form>
-        <div id="economic-result" class="calc-result"></div>
+        <div id="incentive-result" class="calc-result"></div>
       </div>
     </section>
   </main>

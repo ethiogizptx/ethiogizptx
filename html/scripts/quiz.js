@@ -28,11 +28,11 @@ function checkAnswer(userAnswer) {
   const correctAnswer = questions[currentQuestionIndex].answer;
   if (userAnswer === correctAnswer) {
       feedback.textContent = "Correct!";
-      feedback.style.color = "#10b981"; // Green for correct answer
+      feedback.style.color = "#0fff02"; // Green for correct answer
       score++;
   } else {
       feedback.textContent = "Incorrect!";
-      feedback.style.color = "#e11d48"; // Red for incorrect answer
+      feedback.style.color = "#ff0000"; // Red for incorrect answer
   }
   nextQuestionBtn.classList.remove("hidden");
 }
