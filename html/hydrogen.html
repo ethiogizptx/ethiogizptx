@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to Green Hydrogen</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #d1fae5; /* Light green background for eco-friendly theme */
-            color: #064e3b;
-        }
+        /* Header/Footer styles remain unchanged */
         header {
             background-color: #047857;
             color: white;
@@ -43,31 +40,163 @@
         .nav-links a:hover {
             color: #a7f3d0;
         }
-        .about {
-            max-width: 1000px;
+
+        main {
             margin: 120px auto 60px;
-            padding: 20px;
+            width: 100%;
+            padding: 0px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #b00f8d, #7025b6);
+            color: rgb(250, 250, 250);
+            padding: 4rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
-        .about h1, .about h2 {
-            color: #047857;
+
+        .hydrogen-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
-        .feature-container {
+
+        .stat-card {
+            background: rgba(4, 165, 42, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .production-process {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 4rem 0;
+            background: rgb(99, 16, 16);
+            padding: 2rem;
+            border-radius: 20px;
         }
-        .feature-box {
-            background-color: white;
-            padding: 15px;
+
+        .process-visual {
+            width: 50%;
+            height: 400px;
+            position: relative;
+        }
+
+        .molecule-model {
+            width: 100%;
+            height: 100%;
+        }
+
+        .comparison-section {
+            background: rgb(6, 43, 34);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .interactive-timeline {
+            position: relative;
+            height: 150px;
+            margin: 3rem 0;
+            background: rgb(65, 21, 21);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .timeline-item {
+            position: absolute;
+            width: 120px;
+            padding: 1rem;
+            background: #303ec1;
+            color: rgb(226, 7, 7);
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 250px;
-            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ethiopia-focus {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+            background: rgb(156, 161, 5);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .quiz-container {
+            background: rgb(245, 4, 197);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+        .section-subtitle {
+            border-left: 4px solid #047857;
+            padding-left: 1rem;
+            margin: 2rem 0;
+            color: #064e3b;
+        }
+
+        .video-library {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .video-library {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .video-card {
+            background: rgb(7, 232, 236);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .simulation-container {
+            background: rgb(42, 53, 214);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            position: relative;
+            min-height: 500px;
+        }
+.electrolysis-diagram {
+            width: 100%;
+            height: 400px;
+            background: #ca6666;
+            position: relative;
+        }
+
+        .simulation-part {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .simulation-info {
+            display: none;
+            position: absolute;
+            background: rgb(166, 100, 64);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(112, 255, 3, 0.342);
+            z-index: 100;
         }
         footer {
             background-color: #064e3b;
@@ -76,42 +205,249 @@
             padding: 1rem;
             position: relative;
             width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="stakeholders.html">Stakeholders</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
-                <li><a href="experts.html">Experts Directory</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <!-- Your existing header content -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="stakeholders.html">Stakeholders</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
+                    <li><a href="experts.html">Experts Directory</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
     </header>
 
     <main>
-        <section>
-            <h1>Introduction to Green Hydrogen</h1>
-            <p>Green hydrogen is a zero-emission energy source produced using renewable electricity to split water into hydrogen and oxygen via electrolysis.</p>
-            <h2>What You Will Learn</h2>
-            <ul>
-                <li>Basics of hydrogen production</li>
-                <li>The role of electrolysis in green hydrogen</li>
-                <li>Hydrogen storage and transportation</li>
-                <li>Applications of green hydrogen in industries</li>
-            </ul>
-            <p>Upon completion, you will earn a certification in Green Hydrogen Fundamentals.</p>
+        <section class="hero-section">
+            <h1>Green Hydrogen 101</h1>
+            <p>Ethiopia's Key to Sustainable Energy Transition</p>
+          
+            <div class="hydrogen-stats">
+                <div class="stat-card">
+                    <h3>100% Renewable</h3>
+                    <p class="stat-number" data-target="100">0</p>
+                    <p>Energy Source</p>
+                </div>
+                <div class="stat-card">
+                    <h3>CO₂ Reduction</h3>
+                    <p class="stat-number" data-target="85">0</p>
+                    <p>Compared to Fossil Fuels</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Energy Potential</h3>
+                    <p class="stat-number" data-target="15000">0</p>
+                    <p>GWh/year Capacity in Ethiopia</p>
+                </div>
+            </div>
+             <!-- Video Explainers Section -->
+        <section class="video-library">
+            <h2>Video Explainers</h2>
+            <div class="video-card">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/9OKx0v5qQtk" 
+                        frameborder="0" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h4>Green Hydrogen Basics</h4>
+                    <p>Fundamentals of hydrogen production and applications</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/fkX-H24Chfw" 
+                        frameborder="0" allowfullscreen></iframe>
+                <div class="video-info">
+                    <h4>Ethiopia's Renewable Potential</h4>
+                    <p>Analysis of national capabilities in green fuel production</p>
+                </div>
+            </div>
+
         </section>
+         <section class="simulation-container">
+            <h2>Interactive Electrolysis Process</h2>
+            <div class="electrolysis-diagram" id="electrolysisSim">
+                <div class="simulation-part" id="anode" style="left: 20%; top: 30%">⚡ Anode</div>
+                <div class="simulation-part" id="cathode" style="right: 20%; top: 30%">⚡ Cathode</div>
+                <div class="simulation-part" id="membrane" style="left: 45%; top: 50%">🔬 Membrane</div>
+                <div class="simulation-info" id="simInfo"></div>
+            </div>
+            
+            <div class="simulation-controls">
+                <button onclick="startElectrolysis()">Start Reaction</button>
+                <button onclick="resetSimulation()">Reset</button>
+            </div>
+        </section>
+
+        <section class="production-process">
+            <div class="process-info">
+                <h2>Production Process</h2>
+                <div class="process-step active" data-step="1">
+                    <h3>Renewable Energy Source</h3>
+                    <p>Solar, wind, or hydropower generation</p>
+                </div>
+                <div class="process-step" data-step="2">
+                    <h3>Water Electrolysis</h3>
+                    <p>Splitting water into H₂ and O₂</p>
+                </div>
+                <div class="process-step" data-step="3">
+                    <h3>Hydrogen Storage</h3>
+                    <p>Compression or liquefaction</p>
+                </div>
+                <div class="process-step" data-step="4">
+                    <h3>Energy Application</h3>
+                    <p>Transportation, industry, power</p>
+                </div>
+            </div>
+            <div class="process-visual">
+                <canvas class="molecule-model" id="hydrogenModel"></canvas>
+            </div>
+        </section>
+
+        <section class="comparison-section">
+            <h2>Hydrogen Types Comparison</h2>
+            <canvas id="hydrogenChart"></canvas>
+        </section>
+
+        <section class="ethiopia-focus">
+            <div class="ethiopia-map">
+                <h3>Ethiopia's Green Hydrogen Potential</h3>
+                <!-- Add map visualization here -->
+            </div>
+            <div class="ethiopia-facts">
+                <h3>Key Advantages</h3>
+                <ul>
+                    <li>15GW renewable energy potential</li>
+                    <li>Strategic location for export</li>
+                    <li>Government policy support</li>
+                </ul>
+                <div id="fact-generator"></div>
+            </div>
+        </section>
+
+        <section class="quiz-container">
+            <h2>Knowledge Check</h2>
+            <div id="hydrogenQuiz"></div>
+        </section>
+        
     </main>
 
     <footer>
-        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+        <!-- Your existing footer content -->
+        
+            <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+    
     </footer>
+
+    <script>
+        // Animated number counters
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            const increment = target / 100;
+            let current = 0;
+
+            const updateCounter = () => {
+                if(current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            updateCounter();
+        });
+
+        // Hydrogen comparison chart
+        const ctx = document.getElementById('hydrogenChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Grey', 'Blue', 'Green'],
+                datasets: [{
+                    label: 'CO₂ Emissions (kg/kg H₂)',
+                    data: [10, 5, 0.2],
+                    backgroundColor: ['#777', '#4299e1', '#98f405']
+                }]
+            }
+        });
+
+        // Interactive 3D model
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 400/400, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hydrogenModel') });
+        renderer.setSize(400, 400);
+
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshPhongMaterial({ color: 0x047857 });
+        const hydrogenAtom = new THREE.Mesh(geometry, material);
+        scene.add(hydrogenAtom);
+
+        camera.position.z = 3;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            hydrogenAtom.rotation.x += 0.01;
+            hydrogenAtom.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Interactive process steps
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.addEventListener('mouseover', () => {
+                document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
+                step.classList.add('active');
+            });
+        });
+        // Electrolysis Simulation Logic
+        const parts = {
+            anode: "Where oxygen gas (O₂) is produced through oxidation",
+            cathode: "Where hydrogen gas (H₂) is produced through reduction",
+            membrane: "Proton-exchange membrane allows H⁺ ions to pass through"
+        };
+
+        document.querySelectorAll('.simulation-part').forEach(part => {
+            part.addEventListener('click', (e) => {
+                const infoBox = document.getElementById('simInfo');
+                infoBox.style.display = 'block';
+                infoBox.style.left = `${e.clientX}px`;
+                infoBox.style.top = `${e.clientY}px`;
+                infoBox.innerHTML = `<h4>${e.target.id}</h4><p>${parts[e.target.id]}</p>`;
+                
+                setTimeout(() => {
+                    infoBox.style.display = 'none';
+                }, 3000);
+            });
+        });
+        function startElectrolysis() {
+            document.querySelectorAll('.simulation-part').forEach(part => {
+                part.style.animation = "pulse 1s infinite";
+            });
+            // Add visual effects for water splitting
+        }
+
+        function resetSimulation() {
+            document.querySelectorAll('.simulation-part').forEach(part => {
+                part.style.animation = "";
+            });
+        }
+
+        // Add animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
 </body>
 </html>

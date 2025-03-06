@@ -3,8 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Agriculture</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ministry of Agriculture - Green Hydrogen PtX Initiatives</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .agriculture h1, .agriculture h2 {
+            color: #ffffff;
+            text-align: center;
+            background-color: #08ff19;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            width: 65%;
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            transition: width 1s ease-in-out;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            background: #e9f5eb;
+            margin: 1rem;
+            border-radius: 5px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .time-toggle {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 1;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #047857;
+            background: white;
+            color: #047857;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,16 +151,149 @@
             </ul>
         </nav>
     </header>
+    
+ <Main>
+  <section class="agriculture">
+    <h1> Ministry of Agriculture </h1>
+    <div class="section-card">
+        <h2><img src="assets/images/MoA.png" alt="Ministry of Agriculture">  Ministry of Agriculture </h2>
+        <p>Driving Sustainable Agriculture through Green Hydrogen Technologies</p>
+    </div>
+        <h3><img src="policy-icon.svg" class="icon" alt="Policy">Strategic Policy Framework</h2>
+        <ul>
+            <li>Implemented National Green Growth Strategy 2025-2030</li>
+            <li>Established 40% renewable energy mandate for fertilizer production</li>
+            <li>Phased reduction plan for synthetic fertilizer imports by 2030</li>
+        </ul>
+    </div>
 
-    <main>
-        <section>
-            <h1>Ministry of Agriculture</h1>
-            <p>The Ministry of Agriculture plays a crucial role in Ethiopia’s food security. It collaborates with green hydrogen initiatives to introduce sustainable ammonia-based fertilizers, ensuring eco-friendly agricultural development.</p>
-        </section>
-    </main>
+    <div class="section-card">
+        <h3><img src="capacity-icon.svg" class="icon" alt="Capacity">Capacity Building Programs</h2>
+            <div class="section-card">
+                <h2><img src="chart-icon.svg" class="icon" alt="Chart">Progress Overview</h2>
+                <div class="chart-container">
+                    <select class="time-toggle" id="timeRange">
+                        <option value="yearly">Yearly View</option>
+                        <option value="monthly">Monthly View</option>
+                    </select>
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="trainingProgress">7% Target Achieved</div>
+            </div>
+        
+        <p>Current Initiatives:</p>
+        <ul>
+            <li>12 Regional Green Fertilizer Training Centers</li>
+            <li>Farmer Education Program (35,000 will be trained in 2025)</li>
+            <li>Technical Partnerships with 7 International Agritech Institutes</li>
+        </ul>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
-    </footer>
+    <div class="section-card">
+        <h3><img src="incentive-icon.svg" class="icon" alt="Incentive">Economic Incentives</h2>
+        <div class="timeline">
+            <div class="timeline-item">2025: 30% Tax Credit for Green Fertilizer Production</div>
+            <div class="timeline-item">2026: $15M Grant Program Launch</div>
+            <div class="timeline-item">2027: Land Lease Discounts for PtX Facilities</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h3><img src="partner-icon.svg" class="icon" alt="Partners">Strategic Partnerships</h2>
+        <div class="partner-logos" id="partnerTicker">
+            <!-- JS will populate this -->
+        </div>
+    </div>
+
+    <script>
+        // Animated progress bar
+        window.addEventListener('load', () => {
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = '7%';
+
+            // Partner ticker
+            const partners = [
+                "African Development Bank",
+                "GIZ Ethiopia",
+                "International PtX Hub",
+                "FAO (UN Food and Agriculture Organization)",
+                "ETH Zurich - Sustainable Energy Lab",
+                "Ethiopian Biotechnology Institute",
+                "Jimma University",
+                "Global Green Growth Institute",
+                "Siemens Energy Africa"
+            ];
+
+            const ticker = document.getElementById('partnerTicker');
+            let index = 0;
+
+            function updateTicker() {
+                ticker.innerHTML = `<div class="timeline-item">${partners[index]}</div>`;
+                index = (index + 1) % partners.length;
+            }
+
+            setInterval(updateTicker, 3000);
+            updateTicker();
+        });
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        let progressChart;
+
+        const yearlyData = {
+            labels: ['2025', '2026', '2027', '2028', '2029','2030'],
+            datasets: [{
+                label: 'Target Achievement (%)',
+                data: [7, 35, 50, 65,80,95],
+                borderColor: '#047857',
+                tension: 0.4,
+                fill: false
+            }]
+        };
+        const monthlyData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Monthly Progress (%)',
+                data: [2, 4, 7, 9, 11, 14, 16, 17, 17, 18, 19, 20],
+                borderColor: '#047857',
+                tension: 0.4,
+                fill: false
+            }]
+        };
+        function createChart(data) {
+            if (progressChart) progressChart.destroy();
+            
+            progressChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        // Initial chart
+        createChart(yearlyData);
+
+        // Time range toggle
+        document.getElementById('timeRange').addEventListener('change', (e) => {
+            createChart(e.target.value === 'yearly' ? yearlyData : monthlyData);
+        });
+    </script>
+ </section>
+ <footer>
+    <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+</footer>
+</main>
 </body>
 </html>
