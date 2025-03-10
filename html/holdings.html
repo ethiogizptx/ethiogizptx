@@ -3,14 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethiopian Investment Holdings</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ethiopia Investment Holding | Strategic Capital Partner</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --eih-red: #DA121A;
+            --eih-yellow: #FCDD09;
+            --eih-green: #078930;
+            --portfolio-blue: #1D4E8F;
+        }
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+       
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+
+        .eih-container {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .strategic-hero {
+            background: linear-gradient(135deg, var(--eih-green) 0%, var(--portfolio-blue) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .risk-mitigation {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .leadership-card {
+            background: rgba(40, 42, 19, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            transition: transform 0.3s;
+            position: relative;
+            color: white;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: rgb(0, 128, 30);
+            color: var(--dark-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(4,120,87,0.2);
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(93, 31, 31);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -22,13 +149,163 @@
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h1>Ethiopian Investment Holdings</h1>
-            <p>As a strategic partner, Ethiopian Investment Holdings manages public-private partnerships and ensures financing opportunities for renewable energy projects, including green hydrogen.</p>
+    <div class="eih-container">
+        <!-- Strategic Hero Section -->
+        <section class="strategic-hero">
+            <h1>Ethiopia's Strategic Investment Arm</h1>
+            <p>$52.4B Assets Under Management | 41 Portfolio Companies | Pan-African Reach</p>
+            
+            <div class="value-proposition">
+                <div class="proposition-card">
+                    <h3>De-risking Framework</h3>
+                    <div class="risk-meter"></div>
+                </div>
+                <div class="proposition-card">
+                    <h3>Joint Venture ROI</h3>
+                    <div class="roi-calculator"></div>
+                </div>
+            </div>
         </section>
-    </main>
 
+        <!-- Portfolio Showcase -->
+        <section class="portfolio-grid">
+            <div class="sector-card">
+                <h3>Energy & Utilities</h3>
+                <div id="energyChart"></div>
+                <p>$18.2B Assets | 12 Companies</p>
+            </div>
+            <div class="sector-card">
+                <h3>Transport & Logistics</h3>
+                <div id="transportChart"></div>
+                <p>$14.7B Assets | 8 Corridors</p>
+            </div>
+        </section>
+
+        <!-- Risk Mitigation Engine -->
+        <section class="risk-mitigation">
+            <h2>De-risking Architecture</h2>
+            <div class="risk-model">
+                <div class="risk-layer">
+                    <h4>Political Risk Coverage</h4>
+                    <div class="coverage-bar"></div>
+                </div>
+                <div class="risk-layer">
+                    <h4>Currency Hedge Facility</h4>
+                    <div class="coverage-bar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Contact -->
+          <!-- PTx Leadership Card -->
+    <div class="leadership-card">
+        <span class="contact-badge">PtX Lead</span>
+        <div class="leadership-profile">
+            <img src="assets/images/director.png" alt="Mr. Wedmagegn Temesegen" 
+                 style="width:100px; height:100px; border-radius:50%; float:left; margin-right:1rem;">
+            <h2>Mr. Wedmagegn Temesegen</h2>
+            <h3>Chief Investment Officer - Strategic Partnerships</h3>
+            <p>Sovereign wealth Fund | Joint Venture Advisor </p>
+        </div>
+        <div class="contact-details">
+            <p><i class="fas fa-phone"></i> 📞 +251 911 234 567</p>
+            <p><i class="fas fa-envelope"></i>✉️  cio.partnerships@eih.gov.et</p>
+            <button onclick="showContactForm()" class="contact-button">
+                Schedule Consultation
+            </button>
+        </div>
+    </div>
+
+        <!-- Strategic Partnership Map -->
+        <section class="partnership-map">
+            <div id="globalMap"></div>
+            <div class="map-legend">
+                <h3>Global Footprint</h3>
+                <div class="legend-item"><span style="background:var(--eih-green)"></span>Existing JVs</div>
+                <div class="legend-item"><span style="background:var(--portfolio-blue)"></span>Pipeline Projects</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Portfolio Performance Charts
+        new ApexCharts(document.querySelector("#energyChart"), {
+            series: [65, 35],
+            labels: ['Operational', 'Development'],
+            chart: { type: 'donut', height: 200 },
+            colors: [var(--eih-green), var(--portfolio-blue)]
+        }).render();
+
+        new ApexCharts(document.querySelector("#transportChart"), {
+            series: [45, 30, 25],
+            labels: ['Road', 'Rail', 'Air'],
+            chart: { type: 'pie', height: 200 },
+            colors: [var(--eih-red), var(--eih-yellow), var(--portfolio-blue)]
+        }).render();
+
+        // 3D Global Partnership Map
+        const mapContainer = document.getElementById('globalMap');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, mapContainer.offsetWidth/mapContainer.offsetHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        
+        renderer.setSize(mapContainer.offsetWidth, mapContainer.offsetHeight);
+        mapContainer.appendChild(renderer.domElement);
+
+        // Create Globe with Strategic Markers
+        const createGlobe = () => {
+            const geometry = new THREE.SphereGeometry(5, 32, 32);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x1D4E8F,
+                transparent: true,
+                opacity: 0.8
+            });
+            return new THREE.Mesh(geometry, material);
+        };
+
+        scene.add(createGlobe());
+
+        // Add Strategic Markers
+        function addStrategicMarker(lat, lon, color) {
+            const phi = (90 - lat) * Math.PI / 180;
+            const theta = (180 - lon) * Math.PI / 180;
+            
+            const marker = new THREE.Mesh(
+                new THREE.SphereGeometry(0.1),
+                new THREE.MeshPhongMaterial({ color })
+            );
+            
+            marker.position.set(
+                5.2 * Math.sin(phi) * Math.cos(theta),
+                5.2 * Math.cos(phi),
+                5.2 * Math.sin(phi) * Math.sin(theta)
+            );
+            
+            scene.add(marker);
+        }
+
+        // Sample JV Locations
+        addStrategicMarker(9.1450, 40.4897, 0x078930);  // Ethiopia
+        addStrategicMarker(51.5074, -0.1278, 0x1D4E8F);  // London
+        addStrategicMarker(22.3193, 114.1694, 0x1D4E8F); // Hong Kong
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight.position.set(5, 3, 5);
+        scene.add(directionalLight);
+
+        camera.position.z = 15;
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            scene.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
     <footer>
         <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>

@@ -3,14 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Planning & Development</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ministry of Plan & Development | Climate Leadership</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --climate-blue: #1a4d8f;
+            --legacy-green: #2e8b57;
+            --ndc-orange: #ff6b35;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+       
+
+        .stakeholder-container {
+            max-width: 1200px;
+            margin: 120px auto 60px;
+            padding: 20px;
+        }
+
+        .policy-vision {
+            background: linear-gradient(135deg, 
+                rgba(26,77,143,0.9) 0%,
+                rgba(46,139,87,0.9) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .ndc-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .climate-target {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .leadership-card {
+            background: rgba(40, 42, 19, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            transition: transform 0.3s;
+            position: relative;
+            color: white;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: rgb(0, 128, 30);
+            color: var(--dark-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(4,120,87,0.2);
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(93, 31, 31);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .green-legacy-viz {
+            height: 400px;
+            width: 100%;
+            border-radius: 20px;
+            margin: 2rem 0;
+            position: relative;
+            border: 20px solid var(--legacy-green);
+        }
+
+        .carbon-model {
+            height: 500px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        .model-controls, .contact-controls {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        button {
+            background: var(--ndc-orange);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -22,15 +183,209 @@
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h1>Ministry of Planning & Development</h1>
-            <p>The Ministry of Planning & Development plays a vital role in shaping Ethiopia’s long-term economic strategies, including the integration of green hydrogen projects into national policies for sustainable growth.</p>
+    <div class="stakeholder-container">
+        <!-- Policy Vision Section -->
+        <section class="policy-vision">
+            <h1><p> Ministry of Plan and Development</p>Ethiopia's Climate Action Framework</h1>
+            <p>Integrating NDC Targets with Green Legacy Initiative</p>
+            
+            <div class="ndc-dashboard">
+                <div class="climate-target">
+                    <h3>NDC Emission Reduction Progress</h3>
+                    <div id="emissionChart"></div>
+                </div>
+                <div class="climate-target">
+                    <h3>Sectoral Contribution</h3>
+                    <div id="sectorChart"></div>
+                </div>
+            </div>
         </section>
-    </main>
+        <!-- Green Legacy Visualization -->
+        <section class="green-legacy-viz">
+            <canvas id="treeCanvas"></canvas>
+            <div class="tree-counter">
+                <h4>Planted Since 2019</h4>
+                <div id="treeCount">0</div>
+                <small>Trees</small>
+            </div>
+        </section>
 
+        <!-- Carbon Model Visualization -->
+        <section class="carbon-model">
+            <div id="carbonViz"></div>
+            <div class="model-controls">
+                <button onclick="runScenario('BAU')">Business as Usual</button>
+                <button onclick="runScenario('NDC')">NDC Pathway</button>
+                <button onclick="runScenario('NetZero')">Net-Zero 2050</button>
+            </div>
+        </section>
+        <!-- Ministry Representative -->
+        
+        <!-- PTx Leadership Card -->
+    <div class="leadership-card">
+        <span class="contact-badge">PtX Lead</span>
+        <div class="leadership-profile">
+            <img src="assets/images/director.png" alt="Mr. Masiresha Yifiru" 
+                 style="width:100px; height:100px; border-radius:50%; float:left; margin-right:1rem;">
+            <h2>Mr. Masiresha Yifiru</h2>
+            <h3>Policy Advisor for Green Hydrogen </h3>
+            <p> CRGE | NDC Expert </p>
+        </div>
+        <div class="contact-details">
+            <p><i class="fas fa-phone"></i>📞 +251 911 234 567</p>
+            <p><i class="fas fa-envelope"></i> ✉️ ptx.lead@moa.gov.et</p>
+            <button onclick="showContactForm()" class="contact-button">
+                Schedule Consultation
+            </button>
+        </div>
+    </div>
+    </div>
     <footer>
         <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>
+
+    <script>
+        // NDC Charts
+        const emissionOptions = {
+            series: [{
+                name: "Emissions",
+                data: [400, 380, 350, 320, 300, 280, 250]
+            }],
+            chart: { type: 'line', height: 300 },
+            colors: ['#ff6b35'],
+            xaxis: { categories: ['2020','2021','2022','2023','2024','2025','2030'] },
+            annotations: {
+                yaxis: [{
+                    y: 150,
+                    borderColor: '#2e8b57',
+                    label: { text: 'NDC Target 2030' }
+                }]
+            }
+        };
+        new ApexCharts(document.querySelector("#emissionChart"), emissionOptions).render();
+
+        const sectorOptions = {
+            series: [44, 28, 18, 10],
+            labels: ['Energy', 'Agriculture', 'Industry', 'Waste'],
+            chart: { type: 'donut', height: 300 },
+            colors: ['#1a4d8f', '#2e8b57', '#ff6b35', '#6b7280']
+        };
+        new ApexCharts(document.querySelector("#sectorChart"), sectorOptions).render();
+
+        // Green Legacy Visualization
+        const treeCanvas = document.getElementById('treeCanvas');
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: treeCanvas,
+            antialias: true 
+        });
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, treeCanvas.offsetWidth / treeCanvas.offsetHeight, 0.1, 1000);
+        const treeCountElement = document.getElementById('treeCount');
+
+        renderer.setSize(treeCanvas.offsetWidth, treeCanvas.offsetHeight);
+        renderer.setClearColor(0xf0fdf4);
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+
+        camera.position.z = 15;
+        camera.position.y = 10;
+        camera.lookAt(0, 0, 0);
+
+        function createTree() {
+            const trunk = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.1, 0.1, 1),
+                new THREE.MeshPhongMaterial({ color: 0x6b4226 })
+            );
+            const leaves = new THREE.Mesh(
+                new THREE.ConeGeometry(0.8, 2, 8),
+                new THREE.MeshPhongMaterial({ color: 0x2e8b57 })
+            );
+            leaves.position.y = 1;
+            
+            const tree = new THREE.Group();
+            tree.add(trunk);
+            tree.add(leaves);
+            
+            tree.position.x = (Math.random() - 0.5) * 20;
+            tree.position.z = (Math.random() - 0.5) * 20;
+            
+            return tree;
+        }
+
+        let plantedTrees = 0;
+        const targetTrees = 25000000000;
+        
+        function animateTrees() {
+            requestAnimationFrame(animateTrees);
+            
+            if(plantedTrees < targetTrees) {
+                plantedTrees += 1000000;
+                treeCountElement.textContent = `${(plantedTrees / 1000000).toLocaleString()}M`;
+                scene.add(createTree());
+            }
+            
+            renderer.render(scene, camera);
+        }
+        animateTrees();
+
+        // Carbon Model
+        const carbonOptions = {
+            series: [{
+                name: 'Emissions',
+                data: []
+            }],
+            chart: {
+                type: 'line',
+                height: 400,
+                toolbar: { show: false }
+            },
+            xaxis: {
+                type: 'datetime',
+                labels: { format: 'yyyy' }
+            },
+            yaxis: { 
+                title: { text: 'Million Tons CO₂e' },
+                min: -50,
+                max: 500
+            }
+        };
+        const carbonChart = new ApexCharts(document.querySelector("#carbonViz"), carbonOptions);
+        carbonChart.render();
+
+        const scenarios = {
+            BAU: [150, 180, 210, 250, 300, 360, 420],
+            NDC: [150, 140, 120, 100, 80, 60, 40],
+            NetZero: [150, 100, 50, 20, 0, -10, -20]
+        };
+
+        function runScenario(scenarioKey) {
+            carbonChart.updateSeries([{
+                name: scenarioKey,
+                data: scenarios[scenarioKey].map((value, index) => ({
+                    x: new Date(2020 + index * 5, 0),
+                    y: value
+                }))
+            }]);
+        }
+        runScenario('BAU');
+
+        // Contact Modal
+        function showContactForm() {
+            // Implement modal logic here
+            alert("Contact form will appear here with scheduling options");
+        }
+
+        // Responsive Handling
+        window.addEventListener('resize', () => {
+            renderer.setSize(treeCanvas.offsetWidth, treeCanvas.offsetHeight);
+            camera.aspect = treeCanvas.offsetWidth / treeCanvas.offsetHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
 </body>
 </html>

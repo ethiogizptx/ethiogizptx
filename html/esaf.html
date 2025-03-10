@@ -13,7 +13,7 @@
             color: white;
             padding: 1rem 0;
             text-align: center;
-            position: fixed;
+            position: relative;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -38,14 +38,9 @@
         .nav-links a:hover {
             color: #a7f3d0;
         }
-        main {
-            margin: 120px auto 60px;
-            max-width: 1200px;
-            padding: 20px;
-        }
-
+       
         .hero-banner {
-            background: linear-gradient(135deg, #047857, #064e3b);
+            background: linear-gradient(135deg, #18172a, #131734);
             color: white;
             padding: 4rem 2rem;
             border-radius: 20px;
@@ -61,16 +56,18 @@
         }
 
         .module-card {
-            background: white;
+            background: rgb(44, 27, 57);
             border-radius: 15px;
-            padding: 2rem;
+            color: white;
+            padding: 4rem;
             box-shadow: 0 8px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             cursor: pointer;
         }
 
         .module-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px #2eec041a;
         }
 
         .process-diagram {
@@ -105,6 +102,8 @@
             padding: 2rem;
             border-radius: 20px;
             margin: 3rem 0;
+            width: 1200px;
+            height: 600px;
         }
 
         .certification-badge {
@@ -133,12 +132,35 @@
             gap: 2rem;
             margin: 3rem 0;
         }
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .module-card :hover{
+            transform: scale(1.2);
+            box-shadow: 0 90px 55px #2eec041a;
+        }
+        .certification-badge {
+            text-align: center;
+            margin: 3rem 0;
+            opacity: 10;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .certification-badge.visible {
+            opacity: 80;
+            transform: translateY(10);
+        }
         footer {
             background-color: #064e3b;
             color: white;
             text-align: center;
             padding: 1rem;
-            position: fixed;
+            position: relative;
             width: 100%;
             bottom: 0;
         }
@@ -166,27 +188,34 @@
             <p>Ethiopia's Pathway to Carbon-Neutral Aviation</p>
             <button class="cta-button">Start Learning Journey</button>
         </section>
-
+     <section class="course-modules">
         <div class="learning-path">
             <div class="module-card">
                 <i class="fas fa-atom fa-3x"></i>
-                <h3>eSAF Fundamentals</h3>
+                <h3> Module 1: eSAF Fundamentals</h3>
                 <p>Understanding the chemistry and production processes</p>
                 <div class="progress-bar"></div>
             </div>
             <div class="module-card">
                 <i class="fas fa-wind fa-3x"></i>
-                <h3>Renewable Feedstocks</h3>
+                <h3>Module 2: Renewable Feedstocks</h3>
                 <p>Ethiopian biomass potential and green hydrogen integration</p>
                 <div class="progress-bar"></div>
             </div>
             <div class="module-card">
                 <i class="fas fa-plane fa-3x"></i>
-                <h3>Aviation Integration</h3>
+                <h3>Module 3:Aviation Integration</h3>
                 <p>Implementation strategies for Ethiopian airlines</p>
                 <div class="progress-bar"></div>
             </div>
         </div>
+     </section>
+
+        <section class="certification-badge">
+            <img src="assets/images/Certificate.jpg" alt="eSAF Certification" width="200">
+            <h3>Professional Certification in eSaf Technologies</h3>
+            <p>Complete all modules and assessments to earn your credential</p>
+        </section>
 
         <section class="process-diagram">
             <div class="process-step" data-step="1">
@@ -214,11 +243,7 @@
             <button id="submit-quiz">Check Answers</button>
         </section>
 
-        <section class="certification-badge">
-            <img src="certification-badge.svg" alt="eSAF Certification" width="200">
-            <h3>Earn Your eSAF Expert Certification</h3>
-            <p>Complete all modules and assessments to unlock</p>
-        </section>
+        
     </main>
 
     <footer>

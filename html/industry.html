@@ -3,14 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Industry</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ministry of Industry | Green Hydrogen PtX Ethiopia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --primary-green: #131c36;
+            --dark-green: #0b0b33;
+            --light-green: #a7f3d0;
+        }
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+       
+
+        .industry-hero {
+            background: linear-gradient(135deg, var(--dark-green) 40%, var(--primary-green));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leadership-card {
+            background: rgba(40, 42, 19, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            transition: transform 0.3s;
+            position: relative;
+            color: white;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background:rgb(5, 206, 5) ;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(4,120,87,0.2);
+        }
+
+        .industrial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .data-card {
+            background: rgb(59, 67, 144);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ptx-timeline {
+            position: relative;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgb(96, 7, 92);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .timeline-milestone {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--primary-green);
+            transition: all 0.3s;
+        }
+
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(93, 31, 31);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -21,16 +154,143 @@
             </ul>
         </nav>
     </header>
+    
 
-    <main>
-        <section>
+    <div class="stakeholder-container">
+        <section class="industry-hero">
             <h1>Ministry of Industry</h1>
-            <p>The Ministry of Industry oversees Ethiopia's industrial growth, ensuring that green hydrogen is integrated into manufacturing and production processes. It supports industrial policies that promote clean energy adoption in various sectors.</p>
+            <p>Catalyzing Ethiopia's Green Industrialization through PtX Technologies</p>
+            
+            <div class="industrial-grid">
+                <div class="data-card">
+                    <h3>Project Pipeline Value</h3>
+                    <h2>$2.4B</h2>
+                    <p>2023-2030 PtX Investments</p>
+                    <div id="pipelineChart"></div>
+                </div>
+                
+                <div class="data-card">
+                    <h3>Employment Potential</h3>
+                    <h2>38,000+ Jobs</h2>
+                    <p>Direct & Indirect by 2030</p>
+                    <div id="employmentChart"></div>
+                </div>
+            </div>
         </section>
-    </main>
+
+        <!-- PTx Leadership Card -->
+        <div class="leadership-card">
+            <span class="contact-badge">PtX Lead</span>
+            <div class="leadership-profile">
+                <img src="assets/images/director.png" alt="Dr. Selamawit Gebre" 
+                     style="width:100px; height:100px; border-radius:50%; float:left; margin-right:1rem;">
+                <h2>Dr. Selamawit Gebre</h2>
+                <h3>Director of Green Industrialization</h3>
+                <p>PhD Sustainable Energy Systems | 15+ years experience</p>
+            </div>
+            <div class="contact-details">
+                <p><i class="fas fa-phone"></i> 📞 +251 911 234 567</p>
+                <p><i class="fas fa-envelope"></i>✉️ ptx.lead@industry.gov.et</p>
+                <button onclick="showContactForm()" class="contact-button">
+                    Schedule Consultation
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Timeline -->
+        <div class="ptx-timeline">
+            <h2>Industrial PtX Roadmap</h2>
+            <div class="timeline-milestone" onmouseover="showMilestoneDetail('2023')">
+                2023: National PtX Strategy Finalization
+            </div>
+            <div class="timeline-milestone" onmouseover="showMilestoneDetail('2024')">
+                2024: 1st Industrial PtX Cluster Groundbreaking
+            </div>
+            <div class="timeline-milestone" onmouseover="showMilestoneDetail('2025')">
+                2025: Export-Oriented Green Ammonia Plant Operational
+            </div>
+        </div>
+
+        <!-- Hidden Contact Form -->
+        <div id="contactModal" class="contact-modal">
+            <h3>Schedule with PtX Lead</h3>
+            <form id="consultForm" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Organization" required>
+                <input type="email" placeholder="Email" required>
+                <select required>
+                    <option value="">Consultation Type</option>
+                    <option>Investment Inquiry</option>
+                    <option>Policy Guidance</option>
+                    <option>Technical Partnership</option>
+                </select>
+                <button type="submit">Request Appointment</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Dynamic Charts
+        const pipelineOptions = {
+            series: [{
+                name: "Investment",
+                data: [150, 300, 600, 900, 1200, 1800, 2400]
+            }],
+            chart: { type: 'area', height: 200 },
+            xaxis: { categories: ['2023','2024','2025','2026','2027','2028','2029'] }
+        };
+        new ApexCharts(document.querySelector("#pipelineChart"), pipelineOptions).render();
+
+        const employmentOptions = {
+            series: [12000, 18000, 8000],
+            labels: ['Direct Jobs', 'Indirect Jobs', 'Support Services'],
+            chart: { type: 'donut', height: 200 }
+        };
+        new ApexCharts(document.querySelector("#employmentChart"), employmentOptions).render();
+
+        // Contact System
+        let consultationRequests = [];
+
+        function showContactForm() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            consultationRequests.push(Object.fromEntries(formData));
+            
+            // Show confirmation
+            alert("Request submitted. You'll receive confirmation within 24hrs.");
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Timeline Interaction
+        const milestoneDetails = {
+            '2023': 'Establishing regulatory framework and incentive packages',
+            '2024': 'Developing 500ha industrial zone in Afar Region',
+            '2025': '2M ton/year capacity serving EU and Asian markets'
+        };
+
+        function showMilestoneDetail(year) {
+            const detail = milestoneDetails[year];
+            const tooltip = document.createElement('div');
+            tooltip.className = 'timeline-tooltip';
+            tooltip.innerHTML = `<h4>${year} Details</h4><p>${detail}</p>`;
+            document.body.appendChild(tooltip);
+            
+            setTimeout(() => tooltip.remove(), 3000);
+        }
+
+        // Close modal on outside click
+        window.onclick = function(e) {
+            if(e.target === document.getElementById('contactModal')) {
+                document.getElementById('contactModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

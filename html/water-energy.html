@@ -3,34 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry of Water & Energy</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ministry of Water & Energy | Green Hydrogen PtX Ethiopia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Maintain existing header/footer styles */
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+        .stakeholder-container {
+            max-width: 1200px;
+            margin: 12px auto 60px;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #433b80, #ff0000);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .policy-card {
+            background: rgb(255, 255, 255);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            color: rgb(7, 2, 2);
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            height: 25px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #17ed34;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            background: #624714;
+            margin: 1rem;
+            color: white;
+            border-radius: 10px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 2rem 0;
+
+        }
+        .leadership-card {
+            background: rgba(40, 42, 19, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+            transition: transform 0.3s;
+            position: relative;
+            color: white;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: rgb(0, 128, 30);
+            color: var(--dark-green);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(4,120,87,0.2);
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(93, 31, 31);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+        .energyChart{
+            height: 450px;
+            width: 900px;
+           margin: 4rem 20rem;
+           
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="stakeholders.html">Stakeholders</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
-                <li><a href="experts.html">Experts Directory</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    
+        <header>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="stakeholders.html">Stakeholders</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
+                    <li><a href="experts.html">Experts Directory</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section>
+    <div class="stakeholder-container">
+        <div class="hero-section">
             <h1>Ministry of Water & Energy</h1>
-            <p>The Ministry of Water & Energy is responsible for formulating and implementing policies related to water resource management and energy development in Ethiopia. It plays a key role in promoting renewable energy sources, including green hydrogen, to drive sustainability and energy security.</p>
+            <p>Driving Ethiopia's Green Hydrogen Revolution through Strategic Energy & Water Management</p>
+            <div class="energy-stats">
+                <div class="stat-card">
+                    <h3>Renewable Capacity</h3>
+                    <p class="stat-value">4,300+ MW</p>
+                    <p>Current Installed Capacity</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Hydrogen Target</h3>
+                    <p class="stat-value">500,000 tons</p>
+                    <p>Annual Production by 2035</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="policy-grid">
+            <div class="policy-card">
+                <h2><i class="fas fa-file-contract"></i> Policy Framework</h2>
+                <ul>
+                    <li>National Energy Policy 2022 (Green Hydrogen Mandate)</li>
+                    <li>Renewable Energy Feed-in Tariff Program</li>
+                    <li>Water-Energy Nexus Guidelines</li>
+                </ul>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 65%">65% Implementation</div>
+                </div>
+            </div>
+            
+            <div class="policy-card">
+                <h2><i class="fas fa-bolt"></i> Current Initiatives</h2>
+                <ul>
+                    <li>10 GW Renewable Energy Expansion Plan</li>
+                    <li>Hydrogen Valley Development Program</li>
+                    <li>Grid Modernization Project</li>
+                </ul>
+            </div>
         </section>
-    </main>
+        <section class="policy-card">
+            <h2><i class="fas fa-handshake"></i> Partnerships & Incentives</h2>
+            <div class="partner-logos" id="partnerTicker">
+                <!-- JS will populate -->
+            </div>
+            <ul>
+                <li>25% Tax Holiday for PtX Projects</li>
+                <li>Land Lease Discounts for Renewable Plants</li>
+                <li>$500M International Climate Funding</li>
+            </ul>
+        </section>
+
+        <section class="timeline">
+            <h2>Strategic Roadmap 2023-2035</h2>
+            <div class="timeline-item">2023: National Hydrogen Strategy Launch</div>
+            <div class="timeline-item">2025: 1st Commercial Electrolyzer Operational</div>
+            <div class="timeline-item">2030: 200,000 ton/year Production Capacity</div>
+            <div class="timeline-item">2035: Export Hub Establishment</div>
+        </section>
+
+        <section class="policy-card">
+            <div class="energyChart"> 
+            <h2><i class="fas fa-chart-line"></i> Energy Mix Targets</h2>
+            <canvas id="energyChart"></canvas>
+        </div>
+        </section>
+         <!-- PTx Leadership Card -->
+         <div class="leadership-card">
+            <span class="contact-badge">PtX Lead</span>
+            <div class="leadership-profile">
+                <img src="assets/images/director.png" alt="Eng. Melat Ayele" 
+                     style="width:100px; height:100px; border-radius:50%; float:left; margin-right:1rem;">
+                <h2>Eng. Melat Ayele</h2>
+                <h3>Director of Green Hydrogen PtX</h3>
+                <p>Chemical Engineer | Sustainable Energy Systems</p>
+            </div>
+            <div class="contact-details">
+                <p><i class="fas fa-phone"></i>📞 +251 911 234 567</p>
+                <p><i class="fas fa-envelope"></i> ✉️ ptx.lead@mowe.gov.et</p>
+                <button onclick="showContactForm()" class="contact-button">
+                    Schedule Consultation
+                </button>
+            </div>
+        </div>
+<!-- Hidden Contact Form -->
+<div id="contactModal" class="contact-modal">
+    <h3>Schedule with PtX Lead</h3>
+    <form id="consultForm" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Organization" required>
+        <input type="email" placeholder="Email" required>
+        <select required>
+            <option value="">Consultation Type</option>
+            <option>Investment Inquiry</option>
+            <option>Policy Guidance</option>
+            <option>Technical Partnership</option>
+        </select>
+        <button type="submit">Request Appointment</button>
+    </form>
+</div>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+        <!-- Existing footer content -->
+            <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Animated progress bars
+        document.querySelectorAll('.progress-bar').forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => bar.style.width = width, 500);
+        });
+
+        // Partner ticker
+        const partners = [
+            "African Development Bank",
+            "International Renewable Energy Agency",
+            "Ethiopian Electric Power",
+            "Global Green Growth Institute",
+            "Siemens Energy Africa"
+        ];
+        let partnerIndex = 0;
+        
+        setInterval(() => {
+            document.getElementById('partnerTicker').innerHTML = `
+                <div class="timeline-item">${partners[partnerIndex]}</div>
+            `;
+            partnerIndex = (partnerIndex + 1) % partners.length;
+        }, 3000);
+
+        // Energy mix chart
+        const ctx = document.getElementById('energyChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Hydropower', 'Wind', 'Solar', 'Geothermal', 'Hydrogen'],
+                datasets: [{
+                    data: [65, 15, 12, 3, 5],
+                    backgroundColor: ['#047857', '#065f46', '#0d9488', '#059669', '#a7f3d0']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Timeline animation
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = 1;
+                item.style.transform = 'translateX(0)';
+            }, index * 300);
+        });
+    </script>
 </body>
 </html>

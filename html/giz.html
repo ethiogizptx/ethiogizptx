@@ -3,14 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIZ Ethiopia</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>GIZ Ethiopia | Sustainable PtX Development Hub</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+         header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+        :root {
+            --giz-blue: #00205b;
+            --ptx-green: #f7f7f7;
+            --economic-gold: #ffd700;
+            --badge-gold: #ffd700;
+            --impact-purple: #6a1f7a;
+        }
+
+        .ptx-section {
+            background: rgb(212, 127, 15);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+
+        .initiative-grid {
+            display: grid;
+            background: goldenrod;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .initiative-card {
+            background: rgba(81, 139, 97, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(55, 38, 144, 0.2);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .initiative-card:hover {
+            transform: translateY(-5px);
+            color: #0f3f0d;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--ptx-green);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        .chart-card {
+            background: rgb(233, 208, 208);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-5px);
+        }
+
+        
+        .contact-badge {
+            position: absolute;
+            top: -1px;
+            right: -10px;
+            background: var(--badge-gold);
+            color: var(--giz-blue);
+            padding: 8px 10px;
+            border-radius: 80px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .leadership-card {
+            
+            
+            background: rgb(6, 70, 74);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -21,16 +161,155 @@
             </ul>
         </nav>
     </header>
+    <div class="giz-container">
+        <!-- PtX Initiatives Section -->
+        <section class="ptx-section">
+            <h2>GIZ's PtX Support Framework for Ethiopia 2030</h2>
+            <div class="initiative-grid">
+                <!-- Green Hydrogen -->
+                <div class="initiative-card">
+                    <div class="contact-badge">2030 Target</div>
+                    <h3>Green Hydrogen</h3>
+                    <p class="target">500,000 tons annual production</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+                    </div>
+                    <ul class="support-list">
+                        <li>▲ 15 Technical Assistance Programs</li>
+                        <li>◉ €200M Investment Facilitation</li>
+                    </ul>
+                </div>
 
-    <main>
-        <section>
-            <h1>GIZ Ethiopia</h1>
-            <p>GIZ Ethiopia is a key development partner supporting green hydrogen research, policy implementation, and technical capacity-building in Ethiopia’s renewable energy sector.</p>
+                <!-- Green Fertilizer -->
+                <div class="initiative-card">
+                    <div class="contact-badge">2030 Target</div>
+                    <h3>Green Fertilizer</h3>
+                    <p class="target">1.2M tons urea equivalent</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 18%"></div>
+                    </div>
+                    <ul class="support-list">
+                        <li>▲ 40% Cost Reduction Roadmap</li>
+                        <li>◉ 5 Pilot Plants Development</li>
+                    </ul>
+                </div>
+
+                <!-- eSAF -->
+                <div class="initiative-card">
+                    <div class="contact-badge">2030 Target</div>
+                    <h3>Sustainable Aviation Fuel</h3>
+                    <p class="target">300M liters annual capacity</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 12%"></div>
+                    </div>
+                    <ul class="support-list">
+                        <li>▲ International Certification Support</li>
+                        <li>◉ Feedstock Development Programs</li>
+                    </ul>
+                </div>
+            </div>
         </section>
-    </main>
+      <section>
+           <!-- Enhanced Climate Chart -->
+           <div class="giz-container">
+           <section class="hero-section">
+               <h1>GIZ Ethiopia's Green Transition Framework</h1>
+               <p>Accelerating Ethiopia's 2030 Climate & Economic Goals</p>
+           </section>
 
+           <div class="dashboard-grid">
+               <div class="chart-card">
+                   <h3>CO₂ Reduction Progress</h3>
+                   <div id="climateChart"></div>
+               </div>
+               <div class="chart-card">
+                   <h3>Economic Growth Impact</h3>
+                   <div id="economicChart"></div>
+               </div>
+           </div>
+         </div>
+       </section>
+        <!-- Professional Contact Card -->
+        <div class="leadership-card">
+            <div>
+                <img src="assets/images/director.png" style="width:150px; border-radius:50%">
+            </div>
+            <div class="verification-badge">
+                
+                <strong> Ethiopian German Energy Coorperation </strong>
+           
+           
+            <div>
+                <h2>Mr. Samson Tolessa
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                       <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+               </h2>
+                <h3>Head of Secretariate</h3>
+                <div class="contact-info">
+                    <p>✉️ samson.tolessa@giz.de</p>
+                    <p>📞 +251 911 211 284</p>
+                </div>
+                <button class="cta-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="goldenrod" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                    </svg>
+                    Schedule Meeting
+                </button>
+            </div>
+         </div> 
+        </div>
+    </div>
     <footer>
         <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>
+    <script>
+        // Enhanced Climate Chart
+        new ApexCharts(document.querySelector("#climateChart"), {
+            series: [{
+                name: "CO₂ Reduction",
+                data: [150, 240, 380, 520, 690]
+            }],
+            chart: {
+                type: 'area',
+                height: 300,
+            },
+            xaxis: {
+                categories: ['2019', '2020', '2021', '2022', '2023']
+            },
+            tooltip: {
+                y: { formatter: (val) => `${val} kt CO₂ avoided` }
+            }
+        }).render();
+
+        new ApexCharts(document.querySelector("#economicChart"), {
+            series: [{
+                name: "GDP Contribution",
+                data: [1.2, 1.8, 2.4, 3.1, 3.9]
+            }],
+            chart: {
+                type: 'bar',
+                height: 300,
+            },
+            xaxis: {
+                categories: ['2019', '2020', '2021', '2022', '2023']
+            },
+            tooltip: {
+                y: { formatter: (val) => `$ ${val}B GDP impact` }
+            }
+        }).render();
+
+        // Card Interactions
+        document.querySelectorAll('.initiative-card').forEach(card => {
+            card.addEventListener('click', () => {
+                gsap.to(card, {
+                    scale: 0.98,
+                    duration: 0.3,
+                    yoyo: true,
+                    repeat: 1
+                });
+            });
+        });
+    </script>
 </body>
 </html>

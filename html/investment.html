@@ -3,14 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethiopian Investment Commission</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <title>Ethiopia Green Hydrogen Investment Gateway</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --ethio-green: #078930;
+            --ethio-yellow: #fcdd09;
+            --ethio-red: #da121a;
+            --invest-blue: #1d4e8f;
+        }
+        header {
+            background-color: #047857;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a7f3d0;
+        }
+       
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(45deg, #f8fafc, #f0fdf4);
+        }
+
+        .eic-container {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .investment-hero {
+            background: linear-gradient(135deg, var(--ethio-green) 0%, var(--invest-blue) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .sector-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .investment-map {
+            height: 600px;
+            background: #e5e3fc;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .incentive-calculator {
+            background: rgb(124, 50, 50);
+            padding: 2rem;
+            color: white;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .leadership-card {
+            background: rgb(6, 70, 74);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            margin: 3rem 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #064e3b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -22,15 +142,229 @@
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h1>Ethiopian Investment Commission</h1>
-            <p>The Ethiopian Investment Commission facilitates local and foreign investments, providing policy guidance and incentives for renewable energy and green hydrogen initiatives.</p>
+    <div class="eic-container">
+        <!-- Hero Section -->
+        <section class="investment-hero">
+            <h1>Ethiopia: Africa's Green Hydrogen Powerhouse</h1>
+            <p>Strategic Investment Opportunities in Renewable Energy & PtX Derivatives</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>$10.4B</h3>
+                    <p>Total Investment Potential by 2035</p>
+                    <div class="progress-bar" style="width: 65%"></div>
+                </div>
+                <div class="stat-card">
+                    <h3>150GW</h3>
+                    <p>Renewable Energy Potential</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2.5M tons</h3>
+                    <p>Annual Green Hydrogen Export Target (2030)</p>
+                </div>
+            </div>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
-    </footer>
+        <!-- Market Potential -->
+        <section class="sector-comparison">
+            <div class="market-card">
+                <h2>Domestic Market Drivers</h2>
+                <div id="domesticChart"></div>
+                <ul>
+                    <li>▲ 12% Annual Industrial Growth</li>
+                    <li>◉ 65M Tons Fertilizer Demand (2030)</li>
+                </ul>
+            </div>
+            <div class="market-card">
+                <h2>Export Opportunities</h2>
+                <div id="exportChart"></div>
+                <ul>
+                    <li>€45B EU Green Hydrogen Import Plan</li>
+                    <li>▲ 300% Asian Demand Growth</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Strategic Advantages -->
+        <section class="investment-map" id="strategicMap">
+            <div class="map-legend">
+                <h3>Strategic Assets</h3>
+                <div class="legend-item"><span style="background:#078930"></span>Renewable Zones</div>
+                <div class="legend-item"><span style="background:#1d4e8f"></span>Transport Corridors</div>
+            </div>
+        </section>
+
+        <!-- Investment Incentives -->
+        <section class="incentive-calculator">
+            <h2>Government Incentives Package</h2>
+            <div class="incentive-grid">
+                <div class="incentive-item">
+                    <h3>15-Year Tax Holiday</h3>
+                    <p>For projects >$500M investment</p>
+                </div>
+                <div class="incentive-item">
+                    <h3>100% Duty Free</h3>
+                    <p>Renewable energy equipment</p>
+                </div>
+            </div>
+            <div class="calculator-tool">
+                <input type="number" placeholder="Investment Amount (USD)">
+                <button>Calculate Benefits</button>
+                <div class="result">Estimated ROI: 22-35%</div>
+            </div>
+        </section>
+
+        <!-- Leadership Contact -->
+        <div class="leadership-card">
+            <img src="assets/images/director.png" alt="Commission Advisor" style="width:150px; border-radius:50%">
+            <div>
+                <h2>Mr. Abebe Kebede</h2>
+                <h3>Director of Strategic Energy Investments</h3>
+                <p>✉️ greeninvest@eic.gov.et | 📞 +251 911 223 344</p>
+                <button>Schedule Video Consultation</button>
+                <p>20+ Years Experience | 15 Major Projects Facilitated</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize 3D Strategic Map with Custom Hydrogen Elements
+        const mapContainer = document.getElementById('strategicMap');
+        const scene = new THREE.Scene();
+        
+        // Enhanced Lighting System
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+        directionalLight.position.set(10, 15, 10);
+        scene.add(directionalLight);
+        
+        const camera = new THREE.PerspectiveCamera(45, mapContainer.offsetWidth/mapContainer.offsetHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(mapContainer.offsetWidth, mapContainer.offsetHeight);
+        mapContainer.appendChild(renderer.domElement);
+        
+        // Custom Hydrogen-themed Map Base
+        const createBaseMap = () => {
+          const geometry = new THREE.PlaneGeometry(30, 30);
+          const material = new THREE.MeshPhongMaterial({
+            color: 0x1a4d8f,    // Deep blue for water bodies
+            emissive: 0x0d2c4a,
+            specular: 0xffffff,
+            shininess: 100
+          });
+          const base = new THREE.Mesh(geometry, material);
+          base.rotation.x = -Math.PI / 2;
+          return base;
+        };
+        
+        scene.add(createBaseMap());
+        
+        // Renewable Energy Zones with Dynamic Icons
+        const createHydrogenZone = (x, z, size) => {
+          const group = new THREE.Group();
+          
+          // Base Circle
+          const geometry = new THREE.CircleGeometry(size, 32);
+          const material = new THREE.MeshPhongMaterial({
+            color: 0x2e8b57,
+            transparent: true,
+            opacity: 0.3,
+            side: THREE.DoubleSide
+          });
+          const zone = new THREE.Mesh(geometry, material);
+          zone.rotation.x = -Math.PI / 2;
+          
+          // Wind Turbine Icon
+          const turbineGeometry = new THREE.ConeGeometry(0.2, 1, 8);
+          const turbineMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+          const turbine = new THREE.Mesh(turbineGeometry, turbineMaterial);
+          turbine.position.set(0, 0.2, 0);
+          
+          group.add(zone);
+          group.add(turbine);
+          group.position.set(x, 0, z);
+          return group;
+        };
+        
+        // Hydrogen Production Plants
+        const createPlantMarker = (x, z) => {
+          const group = new THREE.Group();
+          
+          // Main Structure
+          const geometry = new THREE.CylinderGeometry(0.3, 0.3, 1, 16);
+          const material = new THREE.MeshPhongMaterial({
+            color: 0xffd700,
+            emissive: 0xda121a,
+            emissiveIntensity: 0.3
+          });
+          const plant = new THREE.Mesh(geometry, material);
+          
+          // Animation System
+          plant.tick = () => {
+            plant.rotation.y += 0.02;
+            plant.scale.y = 1 + Math.sin(Date.now() * 0.005) * 0.2;
+          };
+        
+          group.add(plant);
+          group.position.set(x, 0.5, z);
+          return group;
+        };
+        
+        // Strategic Elements
+        scene.add(createHydrogenZone(5, 3, 3));  // Afar Renewable Zone
+        scene.add(createHydrogenZone(-2, 4, 2.5)); // Oromia Solar Field
+        scene.add(createPlantMarker(0, 0));       // Central Hydrogen Hub
+        scene.add(createPlantMarker(3, -2));      // Eastern Production Plant
+        
+        // Transport Corridors
+        const createPipeline = (start, end) => {
+          const path = new THREE.LineCurve3(
+            new THREE.Vector3(start.x, 0.1, start.z),
+            new THREE.Vector3(end.x, 0.1, end.z)
+          );
+          const geometry = new THREE.TubeGeometry(path, 64, 0.1, 8, false);
+          const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
+          return new THREE.Mesh(geometry, material);
+        };
+        
+        scene.add(createPipeline(
+          {x: 0, z: 0}, 
+          {x: 5, z: 3}
+        )); // Hub to Afar Pipeline
+        
+        // Camera Setup
+        camera.position.set(20, 25, 20);
+        camera.lookAt(0, 0, 0);
+        
+        // Animation Loop
+        const animate = () => {
+          requestAnimationFrame(animate);
+          
+          scene.traverse(obj => {
+            if(obj.tick) obj.tick();
+          });
+        
+          renderer.render(scene, camera);
+        };
+        
+        // Interactive Elements
+        mapContainer.addEventListener('click', (event) => {
+          // Implement raycasting for object interaction
+          console.log('Map clicked - implement project details display');
+        });
+        
+        // Responsive Handling
+        window.addEventListener('resize', () => {
+          camera.aspect = mapContainer.offsetWidth / mapContainer.offsetHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(mapContainer.offsetWidth, mapContainer.offsetHeight);
+        });
+        
+        animate();
+        </script>
+        <footer>
+            <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+        </footer>
 </body>
 </html>

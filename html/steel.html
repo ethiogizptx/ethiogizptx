@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Steel</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <title>Green Steel Education | Ethiopia PtX Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #d1fae5; /* Light green background for eco-friendly theme */
-            color: #064e3b;
-        }
+        /* Maintained header/footer styles from previous pages */
         header {
             background-color: #047857;
             color: white;
             padding: 1rem 0;
             text-align: center;
-            position: fixed;
+            position: relative;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -42,32 +37,106 @@
         }
         .nav-links a:hover {
             color: #a7f3d0;
-        }
-        .about {
-            max-width: 1000px;
-            margin: 120px auto 60px;
-            padding: 20px;
+        } 
+    
+        .hero-section {
+            background: linear-gradient(135deg, #131716, #121514);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
         }
-        .about h1, .about h2 {
-            color: #047857;
+
+        .steel-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
-        .feature-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .feature-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 250px;
+
+        .stat-card {
+            background: rgba(73, 12, 92, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .module-card {
+            background: rgb(233, 232, 239);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .module-card :hover{
+            transform: scale(1.2);
+            box-shadow: 0 90px 55px #2eec041a;
+        }
+        .certification-badge {
+            text-align: center;
+            margin: 3rem 0;
+            opacity: 10;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .certification-badge.visible {
+            opacity: 80;
+            transform: translateY(10);
+        }
+        .production-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .process-step {
+            background: #285c9a;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(4,120,87,0.1);
+        }
+
+        .comparison-chart {
+            background: rgb(255, 255, 255);
+            padding: 2rem;
+            border-radius: 20px;
+            height: 600px;
+            width: 1200px;
+            margin: 3rem 0;
+        }
+
+        .ethiopia-advantage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+            background: rgb(124, 56, 56);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
         }
         footer {
             background-color: #064e3b;
@@ -76,42 +145,206 @@
             padding: 1rem;
             position: relative;
             width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="stakeholders.html">Stakeholders</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
-                <li><a href="experts.html">Experts Directory</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="stakeholders.html">Stakeholders</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="impact-analyzer.html">Impact Analyzer</a></li>
+                    <li><a href="experts.html">Experts Directory</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
     </header>
 
     <main>
-        <section>
-            <h1>Green Steel</h1>
-            <p>Green steel is produced using hydrogen instead of coal to remove oxygen from iron ore, drastically reducing CO₂ emissions.</p>
-            <h2>What You Will Learn</h2>
-            <ul>
-                <li>Hydrogen-based steelmaking process</li>
-                <li>Economic and environmental benefits</li>
-                <li>Challenges in adoption</li>
-                <li>Future trends in the steel industry</li>
-            </ul>
-            <p>Certification in Hydrogen-Based Steelmaking will be awarded upon completion.</p>
+        <section class="hero-section">
+            <h1>Green Steel Manufacturing</h1>
+            <p>Revolutionizing Ethiopia's Industrial Future through Hydrogen-Based Steel Production</p>
+            <div class="steel-stats">
+                <div class="stat-card">
+                    <h3>CO₂ Reduction</h3>
+                    <p class="stat-value" data-target="90">0</p>
+                    <p>Compared to Traditional Methods</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Energy Potential</h3>
+                    <p class="stat-value" data-target="10000">0</p>
+                    <p>MW Renewable Capacity Available</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Job Creation</h3>
+                    <p class="stat-value" data-target="50000">0</p>
+                    <p>Potential New Jobs by 2040</p>
+                </div>
+            </div>
         </section>
+        <section class="course-modules">
+            <div class="module-card">
+                <h3>Module 1: Fundamentals</h3>
+                <ul>
+                    <li>Steel production basics</li>
+                    <li>Hydrogen reduction chemistry</li>
+                    <li>Carbon accounting</li>
+                </ul>
+            </div>
+            <div class="module-card">
+                <h3>Module 2: Technology</h3>
+                <ul>
+                    <li>DRI technologies</li>
+                    <li>Electric arc furnaces</li>
+                    <li>Plant design</li>
+                </ul>
+            </div>
+            <div class="module-card">
+                <h3>Module 3: Economics</h3>
+                <ul>
+                    <li>Cost analysis</li>
+                    <li>Market dynamics</li>
+                    <li>Policy frameworks</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="certification-badge">
+            <img src="assets/images/Certificate.jpg" alt="Green Steel Certification" width="200">
+            <h3>Professional Certification in Green Steel Technologies</h3>
+            <p>Complete all modules and assessments to earn your credential</p>
+        </section>
+
+        <section class="production-process">
+            <h2>Green Steel Production Process</h2>
+            <div class="process-step">
+                <i class="fas fa-solar-panel fa-3x"></i>
+                <h3>Renewable Energy</h3>
+                <p>Harnessing Ethiopia's 10GW+ solar and wind potential</p>
+            </div>
+            <div class="process-step">
+                <i class="fas fa-tint fa-3x"></i>
+                <h3>Hydrogen Production</h3>
+                <p>Green H₂ through PEM electrolysis</p>
+            </div>
+            <div class="process-step">
+                <i class="fas fa-industry fa-3x"></i>
+                <h3>Direct Reduction</h3>
+                <p>H₂-based iron ore reduction at 800°C</p>
+            </div>
+            <div class="process-step">
+                <i class="fas fa-cube fa-3x"></i>
+                <h3>Steel Forming</h3>
+                <p>Electric arc furnace processing</p>
+            </div>
+        </section>
+
+        <section class="comparison-chart">
+            <h2>Environmental Impact Comparison</h2>
+            <canvas id="steelChart"></canvas>
+        </section>
+
+        <section class="ethiopia-advantage">
+            <div class="map-visual">
+                <h3>Ethiopia's Strategic Advantages</h3>
+                <ul>
+                    <li>Abundant iron ore reserves</li>
+                    <li>Competitive renewable energy costs</li>
+                    <li>Growing domestic steel demand</li>
+                    <li>Strategic export location</li>
+                </ul>
+            </div>
+            <div class="case-studies">
+                <h3>Project Showcase</h3>
+                <div class="case-study">
+                    <h4>EthioSteel 2030 Initiative</h4>
+                    <p>First commercial-scale green steel plant in East Africa</p>
+                </div>
+            </div>
+        </section>
+
+       
     </main>
 
     <footer>
-        <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+
+            <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
+    
     </footer>
+
+    <script>
+        // Animated statistics
+        const counters = document.querySelectorAll('.stat-value');
+        counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if(current < target) {
+                    current += Math.ceil(target/100);
+                    counter.textContent = current.toLocaleString();
+                    setTimeout(updateCounter, 30);
+                }
+            }
+            updateCounter();
+        });
+
+        // Steel comparison chart
+        const ctx = document.getElementById('steelChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['CO₂ Emissions', 'Energy Use', 'Water Consumption'],
+                datasets: [{
+                    label: 'Traditional Steel',
+                    data: [1.85, 20, 2.5],
+                    backgroundColor: '#94a3b8'
+                }, {
+                    label: 'Green Steel',
+                    data: [0.15, 28, 1.8],
+                    backgroundColor: '#047857'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Tonnes per tonne steel' }
+                    }
+                }
+            }
+        });
+
+        // Certification animation
+        window.addEventListener('scroll', () => {
+            const badge = document.querySelector('.certification-badge');
+            const position = badge.getBoundingClientRect();
+            
+            if(position.top < window.innerHeight) {
+                badge.classList.add('visible');
+            }
+        });
+
+        // Interactive process steps
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.addEventListener('click', () => {
+                const title = step.querySelector('h3').textContent;
+                const details = {
+                    'Renewable Energy': "Ethiopia's potential for 10GW solar and 1.3GW wind energy by 2030",
+                    'Hydrogen Production': "PEM electrolyzers powered by renewable electricity",
+                    'Direct Reduction': "Hydrogen-based reduction at 800-1200°C temperatures",
+                    'Steel Forming': "Electric arc furnaces powered by renewable energy"
+                }[title];
+                
+                alert(`${title}\n\n${details}`);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Fertilizer</title>
-    <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
+    <title>Green Fertilizer Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #d1fae5; /* Light green background for eco-friendly theme */
-            color: #064e3b;
-        }
+        /* Header/Footer styles remain unchanged */
         header {
             background-color: #047857;
             color: white;
             padding: 1rem 0;
             text-align: center;
-            position: fixed;
+            position: relative;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -45,31 +38,88 @@
         .nav-links a:hover {
             color: #a7f3d0;
         }
-        .about {
-            max-width: 1000px;
-            margin: 120px auto 60px;
-            padding: 20px;
+       
+
+        .hero-section {
+            background: linear-gradient(135deg, #2a1c61, #1e1542);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        .fertilizer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .fertilizer-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fertilizer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-diagram {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 4rem 0;
+        }
+
+        .process-step {
+            background: #f0fdf4;
+            padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .about h1, .about h2 {
-            color: #047857;
-        }
-        .feature-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .feature-box {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 250px;
             text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            background: #dcfce7;
+            transform: scale(1.05);
+        }
+
+        .comparison-chart {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            height: 600px;
+            width: 1200px;
+        }
+
+        .molecule-model {
+            width: 100%;
+            height: 400px;
+            background: #f8fafc;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .certification-badge {
+            text-align: center;
+            margin: 3rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .certification-badge.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         footer {
             background-color: #064e3b;
@@ -78,12 +128,15 @@
             padding: 1rem;
             position: relative;
             width: 100%;
+            bottom: 0;
         }
     </style>
+</head>
+<body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="stakeholders.html">Stakeholders</a></li>
                 <li><a href="education.html">Education</a></li>
@@ -96,22 +149,142 @@
     </header>
 
     <main>
-        <section>
-            <h1>Green Fertilizer</h1>
-            <p>Green fertilizers use green ammonia, produced from hydrogen and nitrogen using renewable energy, to create sustainable fertilizers.</p>
-            <h2>What You Will Learn</h2>
-            <ul>
-                <li>Green ammonia production process</li>
-                <li>Advantages over conventional fertilizers</li>
-                <li>Market trends and adoption</li>
-                <li>Role in sustainable agriculture</li>
-            </ul>
-            <p>Earn a certificate in Sustainable Fertilizer Technologies upon completion.</p>
+        <section class="hero-section">
+            <h1>Green Fertilizer Technologies</h1>
+            <p>Sustainable Agriculture through Green Hydrogen Derivatives</p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>CO₂ Reduction</h3>
+                    <p class="stat-value" data-target="85">0</p>
+                    <p>Compared to Conventional Fertilizers</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fertilizer-grid">
+            <div class="fertilizer-card" data-type="urea">
+                <h2>Module 1: Green Urea</h2>
+                <div class="molecule-diagram" id="ureaModel"></div>
+                <ul>
+                    <li>46% Nitrogen content</li>
+                    <li>CO₂-neutral production</li>
+                    <li>Water-soluble formulation</li>
+                </ul>
+            </div>
+            <div class="fertilizer-card" data-type="dap">
+                <h2>Module 2: Green DAP</h2>
+                <div class="molecule-diagram" id="dapModel"></div>
+                <ul>
+                    <li>18% Nitrogen + 46% P₂O₅</li>
+                    <li>Low carbon footprint</li>
+                    <li>Enhanced soil compatibility</li>
+                </ul>
+            </div>
+            <div class="fertilizer-card" data-type="ammonium">
+                <h2>Module 3: Green Ammonium</h2>
+                <div class="molecule-diagram" id="ammoniumModel"></div>
+                <ul>
+                    <li>82% Nitrogen efficiency</li>
+                    <li>Renewable energy powered</li>
+                    <li>pH balanced formula</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="process-diagram">
+            <div class="process-step">
+                <h3>Renewable Energy</h3>
+                <p>Solar/Wind/Hydropower</p>
+            </div>
+            <div class="process-step">
+                <h3>Electrolysis</h3>
+                <p>Green Hydrogen Production</p>
+            </div>
+            <div class="process-step">
+                <h3>Haber-Bosch</h3>
+                <p>Ammonia Synthesis</p>
+            </div>
+            <div class="process-step">
+                <h3>Formulation</h3>
+                <p>Fertilizer Production</p>
+            </div>
+        </section>
+
+        <section class="comparison-chart">
+            <h2>Environmental Impact Comparison</h2>
+            <canvas id="impactChart"></canvas>
+        </section>
+
+        <section class="certification-badge">
+            <img src="assets/images/Certificate.jpg" alt="Green Fertilizer Certification" width="200">
+            <h3>Earn Your Green Fertilizer Certification</h3>
+            <p>Complete all modules to unlock your professional credential</p>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Green Hydrogen PtX Ethiopia. All rights reserved.</p>
     </footer>
+    <script>
+        // Animated statistics
+        const counters = document.querySelectorAll('.stat-value');
+        counters.forEach(counter => {
+            const target = +counter.dataset.target;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if(current < target) {
+                    current += Math.ceil(target/100);
+                    counter.textContent = current;
+                    setTimeout(updateCounter, 30);
+                }
+            }
+            updateCounter();
+        });
+
+        // Impact Comparison Chart
+        const ctx = document.getElementById('impactChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['CO₂ Emissions', 'Energy Use', 'Water Consumption'],
+                datasets: [{
+                    label: 'Conventional',
+                    data: [2.8, 3.5, 4.2],
+                    backgroundColor: '#94a3b8'
+                }, {
+                    label: 'Green Fertilizer',
+                    data: [0.4, 1.2, 1.8],
+                    backgroundColor: '#047857'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'kg CO₂e/kg product' }
+                    }
+                }
+            }
+        });
+
+        // Certification animation
+        window.addEventListener('scroll', () => {
+            const badge = document.querySelector('.certification-badge');
+            const position = badge.getBoundingClientRect();
+            
+            if(position.top < window.innerHeight) {
+                badge.classList.add('visible');
+            }
+        });
+
+        // Interactive process steps
+        document.querySelectorAll('.process-step').forEach(step => {
+            step.addEventListener('click', () => {
+                alert(`Detailed explanation for: ${step.querySelector('h3').textContent}`);
+            });
+        });
+    </script>
 </body>
 </html>
